@@ -178,7 +178,7 @@ h3 {
 
 /* Hero */
 .hero {
-    padding: 72px 0 40px;
+    padding: 40px 0 40px;
     border-bottom: 1px solid var(--line);
     background: radial-gradient(900px 420px at 50% -160px, rgba(56,189,248,.15), transparent 60%);
 }
@@ -595,7 +595,7 @@ textarea {
     }
 
     .hero-grid {
-        grid-template-columns: 1.2fr .8fr;
+        grid-template-columns: 1.2fr 1.3fr;
         align-items: center;
     }
 
