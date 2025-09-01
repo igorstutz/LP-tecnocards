@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>TecnoCards — Placa Personalizada NFC</title>
   <meta name="description" content="Placa Personalizada NFC da TecnoCards: receba pagamentos via PIX, avaliações no Google, cadastre produtos/serviços e muito mais. Sem mensalidade." />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="icon" href="https://institutocdt.com.br/assets/img/favicon.webp" />
   <link rel="preload" href="assets/css/app.css" as="style" />
   <link rel="stylesheet" href="assets/css/app.css" />
@@ -54,7 +55,7 @@
 
       <figure class="device" id="video">
         <div class="glass" aria-hidden="true"></div>
-        <video class="device-video" autoplay muted loop playsinline controls preload="metadata"
+        <video class="device-video" autoplay muted loop playsinline webkit-playsinline controls preload="metadata"
                poster="" aria-label="Demonstração da Placa NFC TecnoCards">
           <source src="media/product-video.mp4" type="video/mp4" />
           Seu navegador não suporta vídeo HTML5.
@@ -333,7 +334,6 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite" hidden>Link copiado.</div>
-
 
   <script src="assets/js/app.js" defer></script>
 </body>

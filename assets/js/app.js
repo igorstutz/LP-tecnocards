@@ -147,21 +147,40 @@ function hide(el){ el?.setAttribute("hidden", ""); }
   });
 })();
 
-// ================== Video Fullscreen ==================
+// ================== Video Fullscreen (robusto, com iOS) ==================
 (function videoDemo(){
   const btnDemo = document.querySelector('a[href="#video"]');
   const video = document.querySelector('#video video');
   if(!btnDemo || !video) return;
 
-  btnDemo.addEventListener('click', (e) => {
-    e.preventDefault();
-    if(video.requestFullscreen){
-      video.requestFullscreen();
-    } else if(video.webkitRequestFullscreen){
-      video.webkitRequestFullscreen();
-    } else if(video.msRequestFullscreen){
-      video.msRequestFullscreen();
+  // Garantias para iOS
+  video.setAttribute('playsinline','');
+  video.setAttribute('webkit-playsinline','');
+
+  async function openFullscreen(){
+    // Fecha FS anterior, se existir
+    try{ if(document.fullscreenElement) await document.exitFullscreen(); }catch(_){}
+
+    try{
+      if (video.requestFullscreen) {
+        await video.requestFullscreen();
+      } else if (video.webkitEnterFullscreen) {
+        // iOS Safari antigo
+        video.webkitEnterFullscreen(); // não é Promise
+      } else if (video.webkitRequestFullscreen) {
+        await video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    }catch(_){
+      // Fallback: foca no vídeo
+      video.scrollIntoView({behavior:'smooth', block:'center'});
     }
-    video.play();
-  });
+
+    try{ await video.play(); }catch(_){}
+  }
+
+  const handler = (e) => { e.preventDefault(); openFullscreen(); };
+  btnDemo.addEventListener('click', handler, {passive:false});
+  btnDemo.addEventListener('touchend', handler, {passive:false});
 })();
