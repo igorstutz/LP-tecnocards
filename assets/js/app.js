@@ -146,3 +146,22 @@ function hide(el){ el?.setAttribute("hidden", ""); }
     }
   });
 })();
+
+// ================== Video Fullscreen ==================
+(function videoDemo(){
+  const btnDemo = document.querySelector('a[href="#video"]');
+  const video = document.querySelector('#video video');
+  if(!btnDemo || !video) return;
+
+  btnDemo.addEventListener('click', (e) => {
+    e.preventDefault();
+    if(video.requestFullscreen){
+      video.requestFullscreen();
+    } else if(video.webkitRequestFullscreen){
+      video.webkitRequestFullscreen();
+    } else if(video.msRequestFullscreen){
+      video.msRequestFullscreen();
+    }
+    video.play();
+  });
+})();
