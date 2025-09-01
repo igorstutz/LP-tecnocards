@@ -86,8 +86,8 @@ h3{ font-size: 1.15rem; }
   overflow:hidden;
   margin-top: 22px;
 }
-.device .glass{ position:absolute; inset:0; background: radial-gradient(420px 180px at 80% -80px, rgba(34,211,238,.12), transparent 60%); }
-.device-video{ width:100%; }
+.device .glass{ position:absolute; inset:0; background: radial-gradient(420px 180px at 80% -80px, rgba(34,211,238,.12), transparent 60%); z-index: 0; }
+.device-video{ width:100%; z-index: 1;}
 
 /* === Full-bleed do vídeo no mobile (ocupa largura do viewport) === */
 .hero .device{
